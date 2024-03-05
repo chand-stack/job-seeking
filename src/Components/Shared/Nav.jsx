@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaBowlingBall } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Nav = () => {
     const links = <>
@@ -43,7 +43,7 @@ Browse Companies
     </div>
     <div className="navbar-end text-2xl">
       <a className="btn mr-2 text-purple-800 bg-transparent border-none hover:bg-purple-800 hover:text-white">Login</a>
-      <a className="btn text-white bg-purple-800 hover:bg-white hover:text-purple-800">Signup</a>
+      <Link to="/signup" className="btn text-white bg-purple-800 hover:bg-white hover:text-purple-800">Signup</Link>
     </div>
   </div></div>
   )
