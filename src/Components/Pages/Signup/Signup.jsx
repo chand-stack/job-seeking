@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import img from "../../../assets/loginjpg.png";
 import { AiFillLock } from "react-icons/ai";
 
 import { MdAttachEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+// import { useContext } from "react";
+// import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Signup = () => {
+
+    const {creatUser} = useContext(AuthContext)
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,6 +19,14 @@ const Signup = () => {
     const email = form.email.value;
     const passowrd = form.password.value;
     console.log(email,passowrd);
+    creatUser(email,passowrd)
+    .then(()=>{
+        console.log("user created successfully");
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+
 
   };
 

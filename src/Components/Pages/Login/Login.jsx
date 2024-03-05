@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-
+const {loginUser}= useContext(AuthContext)
   const navigate = useNavigate();
   const location = useLocation();
   const loginHandler = (e) => {
@@ -16,6 +16,13 @@ const Login = () => {
     const email = form.email.value;
     const passowrd = form.password.value;
     console.log(email,passowrd);
+    loginUser(email,passowrd)
+    .then(()=>{
+        console.log("login successfully");
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
 
   };
 
@@ -67,7 +74,7 @@ const Login = () => {
                     type="submit"
                     className="btn btn-primary bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white"
                   >
-                    Sign Up
+                    Login
                   </button>
                 </div>
                 <p className="text-center mt-3 -mb-3 text-white">

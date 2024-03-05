@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaBowlingBall } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
 
 export const Nav = () => {
+    const {user,logOut} = useContext(AuthContext)
+    // console.log(user.email);
+    const logoutHandler = ()=>{
+        logOut()
+        .then(()=>{
+            console.log("successfully logout");
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
     const links = <>
     <li><NavLink
   to="/messages"
@@ -41,10 +54,19 @@ Browse Companies
        {links}
       </ul>
     </div>
-    <div className="navbar-end text-2xl">
+    {
+        user ? <div className="navbar-end dropdown dropdown-end">
+        <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none"><FaUserCircle className='text-4xl text-purple-800'/></div>
+        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a className='font-semibold'>Dashboard</a></li>
+          <li><a className='font-semibold' onClick={logoutHandler}>Logout</a></li>
+        </ul>
+      </div> :  <div className="navbar-end text-2xl">
       <Link to="/login" className="btn mr-2 text-purple-800 bg-transparent border-none hover:bg-purple-800 hover:text-white">Login</Link>
       <Link to="/signup" className="btn text-white bg-purple-800 hover:bg-white hover:text-purple-800">Signup</Link>
     </div>
+    }
+   
   </div></div>
   )
 }
