@@ -32,9 +32,9 @@ Browse Companies
           {links}
         </ul>
       </div>
-      <a className="btn btn-ghost text-xl font-bold">
+      <Link to="/" className="btn btn-ghost text-xl font-bold">
         <FaBowlingBall className='text-purple-700'/>
-        JobHuntly</a>
+        JobHuntly</Link>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
@@ -42,7 +42,7 @@ Browse Companies
       </ul>
     </div>
     <div className="navbar-end text-2xl">
-      <a className="btn mr-2 text-purple-800 bg-transparent border-none hover:bg-purple-800 hover:text-white">Login</a>
+      <Link to="/login" className="btn mr-2 text-purple-800 bg-transparent border-none hover:bg-purple-800 hover:text-white">Login</Link>
       <Link to="/signup" className="btn text-white bg-purple-800 hover:bg-white hover:text-purple-800">Signup</Link>
     </div>
   </div></div>
