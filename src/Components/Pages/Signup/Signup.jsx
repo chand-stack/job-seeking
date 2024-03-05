@@ -1,17 +1,12 @@
 import img from "../../../assets/loginjpg.png";
 import { AiFillLock } from "react-icons/ai";
-// import { FcGoogle } from "react-icons/fc";
+
 import { MdAttachEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-// import { AuthContext } from "../../../AuthProvider";
-// import Swal from "sweetalert2";
-// import { Helmet } from "react-helmet";
-// import useAxios from "../../../hook/useAxios";
 const Signup = () => {
-//   const { loginUser } = useContext(AuthContext);
-//  const axios = useAxios()
+
   const navigate = useNavigate();
   const location = useLocation();
   const loginHandler = (e) => {
@@ -21,45 +16,6 @@ const Signup = () => {
     const passowrd = form.password.value;
     console.log(email,passowrd);
 
-    // console.log(email, passowrd);
-//     loginUser(email, passowrd)
-//       .then(() => {
-//         Swal.fire(
-//           "Success! 🎉 You are all set!",
-//           "Welcome to our community. Explore and discover exciting career opportunities. Lets get started!",
-//           "success"
-//         );
-//         axios
-//         .post("/api/v1/jwt", { email })
-//         .then((res) => {
-//           console.log(res);
-//         })
-//         .catch((error) => {
-//           console.error("Axios Error:", error);
-//           console.error("Error Message:", error.message);
-//           console.error("Error Response:", error.response);
-//         });
-//         navigate(location.state || "/");
-//       })
-//       .catch((err) => {
-//         Swal.fire("Error", "invalid-login-credentials!", "error");
-//         console.log(err);
-//       });
-//   };
-
-//   const googleHandler = () => {
-//     loginWithGoogle()
-//       .then(() => {
-//         Swal.fire(
-//           "Success! 🎉 You are all set!",
-//           "Welcome to our community. Explore and discover exciting career opportunities. Lets get started!",
-//           "success"
-//         );
-//         location(navigate(location.state || "/"));
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
   };
 
   return (
