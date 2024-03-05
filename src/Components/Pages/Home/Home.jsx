@@ -5,7 +5,7 @@ import { Banner } from '../../Shared/Banner'
 export const Home = () => {
   return (
     <div>
-        <Nav/>
+        
         <Banner/>
     </div>
   )
