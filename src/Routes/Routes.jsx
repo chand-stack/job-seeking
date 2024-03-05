@@ -4,6 +4,9 @@ import { Home } from '../Components/Pages/Home/Home'
 import { Root } from '../MainLayout/Root';
 import Signup from '../Components/Pages/Signup/Signup';
 import Login from '../Components/Pages/Login/Login';
+import Dashboard from '../MainLayout/Dashboard';
+import { AllJobs } from '../Components/Pages/AllJobs/AllJobs';
+import { AddJob } from '../Components/Pages/AddJob/AddJob';
 
 export const router = createBrowserRouter([
     {
@@ -22,4 +25,18 @@ export const router = createBrowserRouter([
     element:<Login/>
 }]
     },
+    {
+        path:"/dashboard",
+        element:<Dashboard/>,
+        children:[
+            {
+                path:"alljobs",
+                element:<AllJobs/>
+            },
+            {
+                path:"addjob",
+                element:<AddJob/>
+            }
+        ]
+    }
   ]);
