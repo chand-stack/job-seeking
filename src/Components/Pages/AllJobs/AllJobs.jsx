@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
 import { FaBowlingBall } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 export const AllJobs = () => {
@@ -113,7 +114,7 @@ refetch()
             <button onClick={()=>deleteHandler(job._id)} className="btn btn-ghost btn-xs text-white bg-red-600">delete</button>
           </th>
           <th>
-            <button className="btn btn-ghost btn-xs text-white bg-blue-500">update</button>
+            <Link to={`/dashboard/updateJob/${job._id}`} className="btn btn-ghost btn-xs text-white bg-blue-500">update</Link>
           </th>
         </tr>)
       }

@@ -7,6 +7,7 @@ import Login from '../Components/Pages/Login/Login';
 import Dashboard from '../MainLayout/Dashboard';
 import { AllJobs } from '../Components/Pages/AllJobs/AllJobs';
 import { AddJob } from '../Components/Pages/AddJob/AddJob';
+import { UpdateJob } from '../Components/Pages/UpdateJob/UpdateJob';
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,12 @@ export const router = createBrowserRouter([
             {
                 path:"addjob",
                 element:<AddJob/>
+            },
+            {
+                path:"updateJob/:id",
+                loader: ({params})=> fetch(`http://localhost:5000/update-job/${params.id}`),
+                element:<UpdateJob/>
+
             }
         ]
     }
