@@ -14,9 +14,11 @@ export const AddJob = () => {
     const jobtype = data.jobtype
     const employment = data.employment 
     const description = data.description
+    const salaryType = data.salaryType
+    const joblocation = data.joblocation
     const postingDate = currentDate
     const jobInfo = {
-        jobtitle,salary,jobtype,employment,description,postingDate
+        jobtitle,salary,jobtype,employment,description,postingDate,salaryType
     }
 const res = await axios.post("http://localhost:5000/post-job", jobInfo)
 console.log(res.data.insertedId);
@@ -55,10 +57,14 @@ if(res.data.insertedId){
                     required
                   />
                 </div>
-                <div className="form-control">
+
+
+
+                <div className='md:flex w-full gap-2'>
+                <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text font-semibold text-lg flex items-center gap-1">
-                      Salary
+                    Salary
                     </span>
                   </label>
                   <input
@@ -69,6 +75,22 @@ if(res.data.insertedId){
                     required
                   />
                 </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text font-semibold text-lg flex items-center gap-1">
+                    Salary Type
+                    </span>
+                  </label>
+                  <select className="select select-bordered w-full "   {...register("salaryType")}>
+  <option value="Per Hour">Per Hour</option>
+  <option value="Per Month">Per Month</option>
+  <option value="Per Year">Per Year</option>
+</select>
+                </div>
+                </div>
+
+
+
                 <div className='md:flex w-full gap-2'>
                 <div className="form-control w-full">
                   <label className="label">
@@ -94,6 +116,23 @@ if(res.data.insertedId){
 </select>
                 </div>
                 </div>
+
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text font-semibold text-lg flex items-center gap-1">
+                      Location
+                    </span>
+                  </label>
+                  <select  className="select select-bordered w-full "  {...register("joblocation")}>
+  <option value="Sylhet" >Sylhet</option>
+  <option value="Dhaka" >Dhaka</option>
+  <option value="Chittagong" >Chittagong</option>
+  <option value="Rajshahi" >Rajshahi</option>
+  <option value="Barisal" >Barisal</option>
+  <option value="Rangpur" >Rangpur</option>
+</select>
+                </div>
+
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-semibold text-lg flex items-center gap-1">

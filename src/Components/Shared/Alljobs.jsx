@@ -4,14 +4,19 @@ import React, { useState } from 'react'
 import { FaPeopleGroup } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 import img from "../../../src/assets/user.gif"
+import { useForm } from 'react-hook-form';
 
 export const Alljobs = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemPerPage, setItemPerPage] = useState(10);
+    const [jobtitle, setJobtitle] = useState("")
+
+    const { register, handleSubmit } = useForm();
+
     const {data:jobs=[], refetch, isLoading} = useQuery({
-        queryKey:["jobs",currentPage],
+        queryKey:["jobs",currentPage,jobtitle],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}`)
+            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}`)
             return res.data
         }
         
@@ -35,10 +40,36 @@ export const Alljobs = () => {
           refetch()
         }
       };
+
+      const onSubmit = async data => {
+        console.log(data);
+      setJobtitle(data.searchjob)
+      }
+
   return (
     <div>
 
         <h1 className='text-center text-3xl md:text-5xl font-bold my-10'>Featured<span className='text-blue-500'>jobs</span></h1>
+
+        <form className='' onSubmit={handleSubmit(onSubmit)}>
+        <div className="join">
+  <div>
+    <div>
+      <input  {...register("searchjob")} className="input input-bordered join-item" placeholder="Search Jobs"/>
+    </div>
+  </div>
+  <select className="select select-bordered join-item">
+    <option disabled selected>Filter</option>
+    <option>Sci-fi</option>
+    <option>Drama</option>
+    <option>Action</option>
+  </select>
+  <div className="indicator">
+    <span className="indicator-item badge badge-secondary">new jobs</span> 
+    <button type='submit' className="btn join-item">Search Job</button>
+  </div>
+</div>
+        </form>
 
 {isLoading ? (
               <div className="flex justify-center">
