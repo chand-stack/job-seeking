@@ -27,7 +27,6 @@ if(res.data.insertedId){
         icon: "success"
       });
 }
-    // console.log(jobtitle,salary,jobtype,description,postingDate,employment);
 }
     
 
