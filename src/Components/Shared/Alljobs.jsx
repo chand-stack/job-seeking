@@ -117,7 +117,7 @@ export const Alljobs = () => {
                 {jobs?.map((job) => (
                   <div
                     key={job._id}
-                    className="space-y-3 border border-gray-700 bg-slate-200 p-3 rounded-lg flex flex-col"
+                    className="space-y-3 border border-blue-500 bg-slate-200 p-3 rounded-lg flex flex-col"
                   >
                     
                     <h1 className="text-2xl md:text-3xl font-semibold text-blue-500">

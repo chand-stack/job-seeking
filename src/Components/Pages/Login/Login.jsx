@@ -5,6 +5,7 @@ import { MdAttachEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
 const {loginUser}= useContext(AuthContext)
@@ -18,7 +19,12 @@ const {loginUser}= useContext(AuthContext)
     console.log(email,passowrd);
     loginUser(email,passowrd)
     .then(()=>{
-        console.log("login successfully");
+        console.log("login successfully")
+        Swal.fire({
+          title: "Good job!",
+          text: "Successfully Loged In!",
+          icon: "success"
+        });
     })
     .catch((err)=>{
         console.log(err);

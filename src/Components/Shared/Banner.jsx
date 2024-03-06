@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../AuthProvider/AuthProvider'
+import Swal from 'sweetalert2'
 
 export const Banner = () => {
+
+  const {loginUser}= useContext(AuthContext)
+
     const loginHandler = e => {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value 
         console.log(email,password);
+        loginUser(email,password)
+        .then(()=> {
+          Swal.fire({
+            title: "Good job!",
+            text: "Successfully Loged In!",
+            icon: "success"
+          });
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
     }
   return (
     <div className='w-full'>

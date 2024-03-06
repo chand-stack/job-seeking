@@ -5,8 +5,9 @@ import { AiFillLock } from "react-icons/ai";
 import { MdAttachEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import axios from "axios";
+
 const Signup = () => {
 
     const {creatUser} = useContext(AuthContext)
@@ -22,6 +23,19 @@ const Signup = () => {
     creatUser(email,passowrd)
     .then(()=>{
         console.log("user created successfully");
+
+        const userDetails = {
+          userEmail : email,
+          userRole : "user"
+        }
+        const res = axios.post("http://localhost:5000/job/user", userDetails)
+        console.log(res);
+        Swal.fire({
+          title: "Good job!",
+          text: "Successfully Sign In!",
+          icon: "success"
+        });
+
     })
     .catch((err)=>{
         console.log(err);

@@ -15,13 +15,6 @@ export const AllJobs = () => {
     }
 })
 
-// const deleteHandler = async (id) => {
-//   console.log(id);
-//   const res = await axios.delete(`http://localhost:5000/admin/delete-job/${id}`)
-//   console.log(res.data);
-// }
-
-// console.log(jobs);
 
 
 const deleteHandler = async (id) => {
