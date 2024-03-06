@@ -9,14 +9,15 @@ export const Alljobs = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemPerPage, setItemPerPage] = useState(10);
     const {data:jobs=[], refetch, isLoading} = useQuery({
-        queryKey:["jobs"],
+        queryKey:["jobs",currentPage],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}`)
+            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}`)
             return res.data
         }
         
     })
     const pages = Math.ceil(jobs.length / itemPerPage);
+    console.log(pages);
     const totalPages = [...Array(pages).keys()];
   console.log(totalPages);
     console.log(jobs);
@@ -24,12 +25,14 @@ export const Alljobs = () => {
     const prevHandler = () => {
         if (currentPage > 0) {
           setCurrentPage(currentPage - 1);
+          refetch()
         }
       };
     
       const nextHandler = () => {
         if (currentPage < totalPages.length) {
           setCurrentPage(currentPage + 1);
+          refetch()
         }
       };
   return (
@@ -110,19 +113,7 @@ export const Alljobs = () => {
         <button onClick={prevHandler} className="btn bg-blue-500 text-white">
           Prev
         </button>
-        {totalPages.map((item) => (
-          <button
-            onClick={() => setCurrentPage(item)}
-            key={item}
-            className={
-              currentPage === item
-                ? "btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white"
-                : "btn bg-blue-500 text-white"
-            }
-          >
-            {item + 1}
-          </button>
-        ))}
+        
         <button onClick={nextHandler} className="btn bg-blue-500 text-white">
           Next
         </button>
