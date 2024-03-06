@@ -8,6 +8,7 @@ import Dashboard from '../MainLayout/Dashboard';
 import { AllJobs } from '../Components/Pages/AllJobs/AllJobs';
 import { AddJob } from '../Components/Pages/AddJob/AddJob';
 import { UpdateJob } from '../Components/Pages/UpdateJob/UpdateJob';
+import { AppliedJobs } from '../Components/Pages/AppliedJobs/AppliedJobs';
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
                 loader: ({params})=> fetch(`http://localhost:5000/update-job/${params.id}`),
                 element:<UpdateJob/>
 
+            },
+            {
+                path:"appliedjobs",
+                elementp:<AppliedJobs/>
             }
         ]
     }

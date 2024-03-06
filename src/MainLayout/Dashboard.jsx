@@ -5,10 +5,11 @@ import { GrDocumentTest } from "react-icons/gr";
 import { FaBowlingBall, FaHome } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 import { PiFlagBannerFill } from "react-icons/pi";
+import useAdmin from "../Hooks/useAdmin";
+
 const Dashboard = () => {
-  const isAdmin = {
-    status: "active", role:"isAdmin"
-  }
+  const [isAdmin] = useAdmin()
+  console.log(isAdmin?.userRole);
   return (
     <div className="flex font-poppin mx-auto">
       <div className="lg:w-1/4 min-h-screen bg-slate-50">
@@ -20,7 +21,7 @@ const Dashboard = () => {
         <div className="hidden lg:contents">
           <ul className="menu-vertical space-y-4 p-4">
             
-              <>
+           {isAdmin?.userRole === "admin" ?    <>
                 {/* admin routes */}
 
                 
@@ -68,7 +69,38 @@ const Dashboard = () => {
                     Home
                   </NavLink>
                 </li>
-              </>
+              </>: <>
+              <li className="text-lg rounded-xl flex  py-1 border-y font-semibold">
+                  <NavLink
+                    to="/dashboard/appliedjobs"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-blue-600 flex items-center gap-2"
+                        : "flex items-center gap-2"
+                    }
+                  >
+                    <FaHome />
+                    Applied Jobs
+                  </NavLink>
+                </li>
+              <li className="text-lg rounded-xl flex  py-1 border-y font-semibold">
+                  <NavLink
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-blue-600 flex items-center gap-2"
+                        : "flex items-center gap-2"
+                    }
+                  >
+                    <FaHome />
+                    Home
+                  </NavLink>
+                </li>
+              </>}
          
           </ul>
         </div>
