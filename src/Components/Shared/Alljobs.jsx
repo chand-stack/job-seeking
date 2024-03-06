@@ -21,12 +21,10 @@ export const Alljobs = () => {
     const {data:jobs=[], refetch, isLoading} = useQuery({
         queryKey:["jobs",currentPage,jobtitle,joblocation,salarytype,jobtype,postingdate],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}&joblocation=${joblocation}&salarytype=${salarytype}&jobtype=${jobtype}&postingdate${postingdate}`)
+            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}&joblocation=${joblocation}&salarytype=${salarytype}&jobtype=${jobtype}&postingdate=${postingdate}`)
             return res.data
         }
     })
-
-    const currentDate = new Date();
 
     const pages = Math.ceil(jobs.length / itemPerPage);
     console.log(pages);
@@ -96,9 +94,9 @@ export const Alljobs = () => {
   <div>
   <select className="select select-bordered join-item" {...register("postingdate")}>
     <option value="">Posting Date</option>
-    <option value={new Date(currentDate - 24 * 60 * 60 * 1000)}>Last 24 Hour</option>
-  <option value={new Date(currentDate - 7 * 24 * 60 * 60 * 1000)}>Last 7 Days</option>
-  <option value={new Date(currentDate).setMonth(new Date(currentDate).getMonth() - 1)}>Last Month</option>
+    <option value="last24hours">Last 24 Hour</option>
+  <option value="last7days">Last 7 Days</option>
+  <option value="lastmonth">Last Month</option>
   </select>
   </div>
   <div className="indicator">
