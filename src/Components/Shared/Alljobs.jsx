@@ -14,17 +14,20 @@ export const Alljobs = () => {
     const [joblocation,setJoblocation] = useState("")
     const [salarytype,setSalarytype] = useState("")
     const [jobtype, setJobtype] = useState("")
+    const [postingdate,setPostingdate]= useState("")
 
     const { register, handleSubmit } = useForm();
 
     const {data:jobs=[], refetch, isLoading} = useQuery({
-        queryKey:["jobs",currentPage,jobtitle,joblocation,salarytype,jobtype],
+        queryKey:["jobs",currentPage,jobtitle,joblocation,salarytype,jobtype,postingdate],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}&joblocation=${joblocation}&salarytype=${salarytype}&jobtype=${jobtype}`)
+            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}&joblocation=${joblocation}&salarytype=${salarytype}&jobtype=${jobtype}&postingdate${postingdate}`)
             return res.data
         }
-        
     })
+
+    const currentDate = new Date();
+
     const pages = Math.ceil(jobs.length / itemPerPage);
     console.log(pages);
     const totalPages = [...Array(pages).keys()];
@@ -51,6 +54,7 @@ export const Alljobs = () => {
       setJoblocation(data.joblocation)
       setSalarytype(data.salarytype)
       setJobtype(data.jobtype)
+      setPostingdate(data.postingdate)
       }
 
   return (
@@ -87,6 +91,14 @@ export const Alljobs = () => {
     <option value="Per Hour">Per Hour</option>
   <option value="Per Month">Per Month</option>
   <option value="Per Year">Per Year</option>
+  </select>
+  </div>
+  <div>
+  <select className="select select-bordered join-item" {...register("postingdate")}>
+    <option value="">Posting Date</option>
+    <option value={new Date(currentDate - 24 * 60 * 60 * 1000)}>Last 24 Hour</option>
+  <option value={new Date(currentDate - 7 * 24 * 60 * 60 * 1000)}>Last 7 Days</option>
+  <option value={new Date(currentDate).setMonth(new Date(currentDate).getMonth() - 1)}>Last Month</option>
   </select>
   </div>
   <div className="indicator">
