@@ -18,7 +18,7 @@ export const AddJob = () => {
     const joblocation = data.joblocation
     const postingDate = currentDate
     const jobInfo = {
-        jobtitle,salary,jobtype,employment,description,postingDate,salaryType
+        jobtitle,salary,jobtype,employment,description,postingDate,salaryType,joblocation
     }
 const res = await axios.post("http://localhost:5000/post-job", jobInfo)
 console.log(res.data.insertedId);
@@ -99,8 +99,8 @@ if(res.data.insertedId){
                     </span>
                   </label>
                   <select  className="select select-bordered w-full "  {...register("jobtype")}>
-  <option value="onsite" >Onsite</option>
-  <option value="remote" >Remote</option>
+  <option value="Onsite" >Onsite</option>
+  <option value="Remote" >Remote</option>
 </select>
                 </div>
                 <div className="form-control w-full">
@@ -110,9 +110,9 @@ if(res.data.insertedId){
                     </span>
                   </label>
                   <select className="select select-bordered w-full "   {...register("employment")}>
-  <option value="intern">Intern</option>
-  <option value="party-time">Part-Time</option>
-  <option value="full-time">Full-Time</option>
+  <option value="Intern">Intern</option>
+  <option value="Part Time">Part-Time</option>
+  <option value="Full Time">Full-Time</option>
 </select>
                 </div>
                 </div>

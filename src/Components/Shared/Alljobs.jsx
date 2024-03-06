@@ -5,18 +5,22 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 import img from "../../../src/assets/user.gif"
 import { useForm } from 'react-hook-form';
+import { FaLocationDot } from "react-icons/fa6";
 
 export const Alljobs = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [itemPerPage, setItemPerPage] = useState(10);
     const [jobtitle, setJobtitle] = useState("")
+    const [joblocation,setJoblocation] = useState("")
+    const [salarytype,setSalarytype] = useState("")
+    const [jobtype, setJobtype] = useState("")
 
     const { register, handleSubmit } = useForm();
 
     const {data:jobs=[], refetch, isLoading} = useQuery({
-        queryKey:["jobs",currentPage,jobtitle],
+        queryKey:["jobs",currentPage,jobtitle,joblocation,salarytype,jobtype],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}`)
+            const res = await axios.get(`http://localhost:5000/all-job?page=${currentPage}&itemperpage=${itemPerPage}&jobtitle=${jobtitle}&joblocation=${joblocation}&salarytype=${salarytype}&jobtype=${jobtype}`)
             return res.data
         }
         
@@ -44,6 +48,9 @@ export const Alljobs = () => {
       const onSubmit = async data => {
         console.log(data);
       setJobtitle(data.searchjob)
+      setJoblocation(data.joblocation)
+      setSalarytype(data.salarytype)
+      setJobtype(data.jobtype)
       }
 
   return (
@@ -52,24 +59,44 @@ export const Alljobs = () => {
         <h1 className='text-center text-3xl md:text-5xl font-bold my-10'>Featured<span className='text-blue-500'>jobs</span></h1>
 
         <form className='' onSubmit={handleSubmit(onSubmit)}>
-        <div className="join">
+        <div className=' flex flex-wrap justify-center'>
   <div>
     <div>
       <input  {...register("searchjob")} className="input input-bordered join-item" placeholder="Search Jobs"/>
     </div>
   </div>
-  <select className="select select-bordered join-item">
-    <option disabled selected>Filter</option>
-    <option>Sci-fi</option>
-    <option>Drama</option>
-    <option>Action</option>
+  <select className="select select-bordered join-item" {...register("joblocation")}>
+    <option value="">Location</option>
+    <option value="Sylhet" >Sylhet</option>
+  <option value="Dhaka" >Dhaka</option>
+  <option value="Chittagong" >Chittagong</option>
+  <option value="Rajshahi" >Rajshahi</option>
+  <option value="Barisal" >Barisal</option>
+  <option value="Rangpur" >Rangpur</option>
   </select>
+  <div>
+  <select className="select select-bordered join-item" {...register("jobtype")}>
+    <option value="">Job Type</option>
+    <option value="Onsite">Onsite</option>
+  <option value="Remote">Remote</option>
+  </select>
+  </div>
+  <div>
+  <select className="select select-bordered join-item" {...register("salarytype")}>
+    <option value="">Salary Type</option>
+    <option value="Per Hour">Per Hour</option>
+  <option value="Per Month">Per Month</option>
+  <option value="Per Year">Per Year</option>
+  </select>
+  </div>
   <div className="indicator">
     <span className="indicator-item badge badge-secondary">new jobs</span> 
     <button type='submit' className="btn join-item">Search Job</button>
   </div>
 </div>
         </form>
+
+<div className='min-h-screen'>
 
 {isLoading ? (
               <div className="flex justify-center">
@@ -91,7 +118,7 @@ export const Alljobs = () => {
                       <img className="rounded-full h-12" src={img} alt="" />
                       <div>
                         
-                        <p>
+                        <p className='font-semibold'>
                           Posted on {new Date(job?.postingDate).toLocaleString()}
                         </p>
                       </div>
@@ -103,25 +130,25 @@ export const Alljobs = () => {
                         <span className="text-xl font-semibold text-blue-500">
                           Employment Type:{" "}
                         </span>{" "}
-                        <span className="text-lg">
+                        <span className="text-lg font-semibold">
                           {job?.employment}
                         </span>
                       </p>
                     </div>
                     <div className="flex-grow">
                       <p>
-                        <span className="text-xl font-semibold text-blue-500">
+                        <span className="text-xl font-semibold text-blue-500 ">
                           Job Type:{" "}
                         </span>{" "}
-                        <span className="text-lg">
+                        <span className="text-lg font-semibold">
                           {job?.jobtype}
                         </span>
                       </p>
                     </div>
                     <div className="flex-grow">
-                      <p className="text-xl">
-                        <span className="text-blue-500">Salary Range:</span> $
-                        {job?.salary} per year
+                      <p className="text-xl font-semibold">
+                        <span className="text-blue-500 font-semibold">Salary Range:</span> $
+                        {job?.salary} {job?.salaryType}
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -131,14 +158,15 @@ export const Alljobs = () => {
                         </button>
                       </Link>
                       <div className="flex items-center gap-2">
-                        <FaPeopleGroup className="text-2xl" />
-                        <p>{job?.applicants} Location</p>
+                        <FaLocationDot className="text-2xl font-semibold" />
+                        <p className='font-semibold'>{job?.joblocation}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             )}
+
 <div>
 <div className="container mx-auto flex justify-center items-center mb-10 gap-4">
         <button onClick={prevHandler} className="btn bg-blue-500 text-white">
@@ -150,6 +178,10 @@ export const Alljobs = () => {
         </button>
       </div>
 </div>
+
+</div>
+
+
     </div>
   )
 }
