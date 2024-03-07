@@ -8,8 +8,7 @@ import useAdmin from '../../Hooks/useAdmin';
 export const Nav = () => {
     const {user,logOut} = useContext(AuthContext)
     const [isAdmin] = useAdmin()
-  console.log(isAdmin?.userRole);
-    // console.log(user.email);
+
     const logoutHandler = ()=>{
         logOut()
         .then(()=>{
@@ -31,7 +30,7 @@ Find Jobs
     <li><NavLink
   to="/messages"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "active" : ""
+    isPending ? "pending" : isActive ? "active underline" : ""
   }
 >
 Browse Companies

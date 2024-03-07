@@ -36,9 +36,9 @@ const deleteHandler = async (id) => {
         console.log(id);
         const res = axios.delete(`http://localhost:5000/admin/delete-job/${id}`);
         console.log(res);
+        refetch()
     } catch (error) {
         console.error("Error deleting job:", error.response.data || error.message);
-        // Handle the error as needed
     }
 
 refetch()

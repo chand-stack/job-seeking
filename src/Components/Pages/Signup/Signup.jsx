@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import img from "../../../assets/loginjpg.png";
 import { AiFillLock } from "react-icons/ai";
-
 import { MdAttachEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
@@ -13,7 +12,6 @@ const Signup = () => {
     const {creatUser} = useContext(AuthContext)
 
   const navigate = useNavigate();
-  const location = useLocation();
   const loginHandler = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -35,6 +33,7 @@ const Signup = () => {
           text: "Successfully Sign In!",
           icon: "success"
         });
+        navigate("/.")
 
     })
     .catch((err)=>{

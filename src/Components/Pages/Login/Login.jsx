@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 const Login = () => {
 const {loginUser}= useContext(AuthContext)
   const navigate = useNavigate();
-  const location = useLocation();
   const loginHandler = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,6 +24,7 @@ const {loginUser}= useContext(AuthContext)
           text: "Successfully Loged In!",
           icon: "success"
         });
+        navigate("/")
     })
     .catch((err)=>{
         console.log(err);
