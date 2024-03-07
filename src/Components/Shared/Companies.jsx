@@ -6,7 +6,7 @@ import { SiAmd } from "react-icons/si";
 export const Companies = () => {
   return (
     <div className='container mx-auto my-20'>
-<h1 className='font-bold text-slate-400 text-start text-2xl'>Companies we helped grow</h1>
+<h1 className='font-bold text-slate-400 text-center md:text-start my-9 text-2xl'>Companies we helped grow</h1>
 <div className='text-slate-400 flex flex-wrap items-center justify-between'>
 <div className='flex items-center gap-2'>
     <SiVodafone className='text-6xl'/>

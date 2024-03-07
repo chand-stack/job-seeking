@@ -111,9 +111,9 @@ export const Alljobs = () => {
       }
 
   return (
-    <div>
+    <div className='container mx-auto'>
 
-        <h1 className='text-center text-3xl md:text-5xl font-bold my-10'>Featured<span className='text-blue-500'>jobs</span></h1>
+        <h1 className='text-start text-3xl md:text-5xl font-bold my-10'>Featured<span className='text-blue-500'>jobs</span></h1>
 
         <form className='' onSubmit={handleSubmit(onSubmit)}>
         <div className=' flex flex-wrap justify-center'>
@@ -161,7 +161,7 @@ export const Alljobs = () => {
 </div>
         </form>
 
-<div className='min-h-screen'>
+<div className=''>
 
 {isLoading ? (
               <div className="flex justify-center">

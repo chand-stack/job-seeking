@@ -9,6 +9,7 @@ import { AllJobs } from '../Components/Pages/AllJobs/AllJobs';
 import { AddJob } from '../Components/Pages/AddJob/AddJob';
 import { UpdateJob } from '../Components/Pages/UpdateJob/UpdateJob';
 import { AppliedJobs } from '../Components/Pages/AppliedJobs/AppliedJobs';
+import { Findjob } from '../Components/Pages/Findjob/Findjob';
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
 {
     path:"/login",
     element:<Login/>
+},
+{
+    path:"/findjob",
+    element:<Findjob/>
 }]
     },
     {

@@ -21,7 +21,7 @@ export const Nav = () => {
     }
     const links = <>
     <li><NavLink
-  to="/messages"
+  to="/findjob"
   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "active" : ""
   }
@@ -62,7 +62,7 @@ Browse Companies
         <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none"><FaUserCircle className='text-4xl text-purple-800'/></div>
         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            
+
             {isAdmin?.userRole === "admin" && user ?<Link to="/dashboard/alljobs" className='font-semibold'>Dashboard</Link> :
             
             <Link to="/dashboard/appliedjobs" className='font-semibold'>Dashboard</Link>}
