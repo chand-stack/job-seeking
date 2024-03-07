@@ -70,7 +70,7 @@ Browse Companies
           <li><a className='font-semibold' onClick={logoutHandler}>Logout</a></li>
         </ul>
       </div> :  <div className="navbar-end text-2xl">
-      <Link to="/login" className="btn mr-2 text-purple-800 bg-transparent border-none hover:bg-purple-800 hover:text-white">Login</Link>
+      <Link to="/login" className="btn mr-2 text-purple-800 bg-transparent  hover:bg-purple-800 hover:text-white border-2 border-purple-800">Login</Link>
       <Link to="/signup" className="btn text-white bg-purple-800 hover:bg-white hover:text-purple-800">Signup</Link>
     </div>
     }

@@ -7,7 +7,6 @@ export const Findjob = () => {
   return (
     <div>
         <FindjobBanner/>
-        <Alljobs/>
         <Companies/>
     </div>
   )

@@ -35,12 +35,10 @@ export const Alljobs = (jobCount) => {
             return res.data
         }
     })
-console.log(parseInt(jobCount?.jobCount))
+
     const pages = Math.ceil(parseInt(jobCount?.jobCount) / itemPerPage);
-    // console.log(pages);
+
     const totalPages = [...Array(pages)?.keys()];
-  console.log(totalPages);
-    // console.log(jobs);
 
     const prevHandler = () => {
         if (currentPage > 0) {
@@ -50,7 +48,7 @@ console.log(parseInt(jobCount?.jobCount))
       };
     
       const nextHandler = () => {
-        if (currentPage < (totalPages.length-1)) {
+        if (currentPage < (totalPages?.length-1)) {
           setCurrentPage(currentPage + 1);
           refetch()
         }
