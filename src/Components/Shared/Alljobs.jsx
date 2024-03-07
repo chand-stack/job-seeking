@@ -168,11 +168,11 @@ export const Alljobs = () => {
                 <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-3 my-10">
                 {jobs?.map((job) => (
                   <div
                     key={job._id}
-                    className="space-y-3 border border-blue-500 bg-slate-200 p-3 rounded-lg flex flex-col"
+                    className="space-y-3 border p-3 rounded-lg flex flex-col shadow-md"
                   >
                     
                     <h1 className="text-2xl md:text-3xl font-semibold text-blue-500">
