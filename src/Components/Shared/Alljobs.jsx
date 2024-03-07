@@ -8,7 +8,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 import Swal from 'sweetalert2';
 
-export const Alljobs = () => {
+export const Alljobs = (jobCount) => {
   const {user} = useContext(AuthContext)
   const [isAdmin] = useAdmin()
     const [currentPage, setCurrentPage] = useState(0);
@@ -35,12 +35,12 @@ export const Alljobs = () => {
             return res.data
         }
     })
-
-    const pages = Math.ceil(jobs.length / itemPerPage);
-    console.log(pages);
-    const totalPages = [...Array(pages).keys()];
+console.log(parseInt(jobCount?.jobCount))
+    const pages = Math.ceil(parseInt(jobCount?.jobCount) / itemPerPage);
+    // console.log(pages);
+    const totalPages = [...Array(pages)?.keys()];
   console.log(totalPages);
-    console.log(jobs);
+    // console.log(jobs);
 
     const prevHandler = () => {
         if (currentPage > 0) {
@@ -50,7 +50,7 @@ export const Alljobs = () => {
       };
     
       const nextHandler = () => {
-        if (currentPage < totalPages.length) {
+        if (currentPage < (totalPages.length-1)) {
           setCurrentPage(currentPage + 1);
           refetch()
         }
@@ -161,7 +161,7 @@ export const Alljobs = () => {
 </div>
         </form>
 <div className=''>
-  
+
 {isLoading ? (
               <div className="flex justify-center">
                 <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>
@@ -240,6 +240,20 @@ export const Alljobs = () => {
           Prev
         </button>
         
+        {totalPages.map((item) => (
+          <button
+            onClick={() => setCurrentPage(item)}
+            key={item}
+            className={
+              currentPage === item
+                ? "btn bg-gradient-to-t from-[#7367F0] from-10% via-[#A582F7] via-30% to-[#CE9FFC] to-90% border-none text-white"
+                : "btn bg-blue-500 text-white"
+            }
+          >
+            {item + 1}
+          </button>
+        ))}
+
         <button onClick={nextHandler} className="btn bg-blue-500 text-white">
           Next
         </button>
