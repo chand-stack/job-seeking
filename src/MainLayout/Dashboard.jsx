@@ -1,10 +1,8 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { BsMenuButtonWideFill, BsFillBookmarkStarFill } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
 import { GrDocumentTest } from "react-icons/gr";
 import { FaBowlingBall, FaHome } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
-import { PiFlagBannerFill } from "react-icons/pi";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {

@@ -3,9 +3,12 @@ import { FaBowlingBall } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { FaUserCircle } from "react-icons/fa";
+import useAdmin from '../../Hooks/useAdmin';
 
 export const Nav = () => {
     const {user,logOut} = useContext(AuthContext)
+    const [isAdmin] = useAdmin()
+  console.log(isAdmin?.userRole);
     // console.log(user.email);
     const logoutHandler = ()=>{
         logOut()
@@ -58,7 +61,13 @@ Browse Companies
         user ? <div className="navbar-end dropdown dropdown-end">
         <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none"><FaUserCircle className='text-4xl text-purple-800'/></div>
         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><Link to="/dashboard/alljobs" className='font-semibold'>Dashboard</Link></li>
+          <li>
+            
+            {isAdmin?.userRole === "admin" && user ?<Link to="/dashboard/alljobs" className='font-semibold'>Dashboard</Link> :
+            
+            <Link to="/dashboard/appliedjobs" className='font-semibold'>Dashboard</Link>}
+
+            </li>
           <li><a className='font-semibold' onClick={logoutHandler}>Logout</a></li>
         </ul>
       </div> :  <div className="navbar-end text-2xl">
