@@ -156,7 +156,7 @@ export const Alljobs = () => {
   </div>
   <div className="indicator">
     <span className="indicator-item badge badge-secondary">new jobs</span> 
-    <button type='submit' className="btn join-item">Search Job</button>
+    <button type='submit' className="btn join-item text-white bg-purple-800">Search Job</button>
   </div>
 </div>
         </form>
@@ -184,7 +184,7 @@ export const Alljobs = () => {
                       <div>
                         
                         <p className='font-semibold'>
-                          Posted on {new Date(job?.postingDate).toLocaleString()}
+                          Posted on {new Date(job?.postingDate).toLocaleString('en-US',{ timeZone: "Asia/Dhaka", year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true } )}
                         </p>
                       </div>
                     </div>
