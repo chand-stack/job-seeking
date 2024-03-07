@@ -48,7 +48,7 @@ export const Banner = () => {
           <input name='password' type="password" placeholder="password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-          <button type='submit' className="btn btn-primary text-white bg-purple-800">Login</button>
+          <button type='submit' className="btn btn-primary text-white bg-purple-800 border-none">Login</button>
         </div>
         <label className="label">
            <h1 className='font-semibold'>Dont have an account? Please <Link to="/signup" className='font-bold text-purple-800'>Signup</Link></h1>
