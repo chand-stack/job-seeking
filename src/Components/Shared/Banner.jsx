@@ -51,7 +51,7 @@ export const Banner = () => {
           <button type='submit' className="btn btn-primary text-white bg-purple-800">Login</button>
         </div>
         <label className="label">
-           <h1 className='font-semibold'>Dont have an account? Please <Link className='font-bold text-purple-800'>Signup</Link></h1>
+           <h1 className='font-semibold'>Dont have an account? Please <Link to="/signup" className='font-bold text-purple-800'>Signup</Link></h1>
           </label>
       </form>
     </div>

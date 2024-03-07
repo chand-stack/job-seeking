@@ -160,9 +160,8 @@ export const Alljobs = () => {
   </div>
 </div>
         </form>
-
 <div className=''>
-
+  
 {isLoading ? (
               <div className="flex justify-center">
                 <span className="loading loading-spinner text-info loading-lg mx-auto h-[50vh] text-center"></span>

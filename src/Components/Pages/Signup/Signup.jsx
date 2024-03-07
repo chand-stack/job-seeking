@@ -51,14 +51,14 @@ const Signup = () => {
             <div className="text-center lg:text-left">
               <img className="lg:max-w-md mx-auto md:mx-0" src={img} alt="" />
             </div>
-            <div className="card  w-full shadow-2xl border-2 border-[#A582F7] max-w-md flex-grow bg-[#111]">
-              <h1 className="font-bold text-2xl md:text-3xl text-center text-white py-5">
+            <div className="card  w-full shadow-2xl border-2  max-w-md flex-grow ">
+              <h1 className="font-bold text-2xl md:text-3xl text-center text-black py-5">
                 Signup <span className="text-[#A582F7]">Now</span>
               </h1>
               <form onSubmit={loginHandler} className="card-body ">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white flex items-center gap-1">
+                    <span className="label-text text-black font-semibold flex items-center gap-1">
                       <MdAttachEmail className="text-[#A582F7] text-2xl" />
                       Email
                     </span>
@@ -73,7 +73,7 @@ const Signup = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white flex items-center gap-1">
+                    <span className="label-text text-black font-semibold flex items-center gap-1">
                       <AiFillLock className="text-[#A582F7] text-2xl" />
                       Password
                     </span>
@@ -94,9 +94,9 @@ const Signup = () => {
                     Sign Up
                   </button>
                 </div>
-                <p className="text-center mt-3 -mb-3 text-white">
+                <p className="text-center mt-3 -mb-3 text-black font-semibold">
                   Already Have An Account? Please{" "}
-                  <Link to="/login" className="text-[#A582F7]">
+                  <Link to="/login" className="text-[#A582F7] font-bold">
                     Login
                   </Link>
                 </p>
