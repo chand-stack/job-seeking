@@ -4,6 +4,7 @@ import { Banner } from '../../Shared/Banner'
 import { Alljobs } from '../../Shared/Alljobs'
 import { Companies } from '../../Shared/Companies'
 import { useLoaderData } from 'react-router-dom'
+import { Explore } from '../../Shared/Explore'
 
 export const Home = () => {
   const jobCount = useLoaderData()
@@ -14,6 +15,7 @@ export const Home = () => {
         <Banner/>
         <Companies/>
         <Alljobs jobCount={jobCount}/>
+        <Explore/>
     </div>
   )
 }
